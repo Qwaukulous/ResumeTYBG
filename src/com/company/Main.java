@@ -10,9 +10,10 @@ public class Main {
         String name;
         String email;
         Boolean addEduHistory = true;
-        Boolean addExpHistory = false;
+        Boolean addExpHistory = true;
         String eduresult;
         String expresult;
+
         //ASK USER FOR NAME
         System.out.print("This is a resume builder, Please enter your name: ");
 
@@ -50,6 +51,7 @@ public class Main {
                 userUniversityname = scanner.nextLine();
 
                 Education userEdu = new Education(userDegreeLevel, userMajor, userUniversityname, userGradYear);
+            }
 
 
                 while (addExpHistory) {
@@ -74,6 +76,12 @@ public class Main {
                         System.out.print("enter your end date: ");
                         UserEndDate = scanner.nextLine();
 
+                        Experience userExp = new Experience(userCompany, userJobTitle, userStartDate, UserEndDate, userJobDiscription);
+                    }
+
+
+
+
 
 
                     }
@@ -85,4 +93,4 @@ public class Main {
             }
         }
     }
-}
+
