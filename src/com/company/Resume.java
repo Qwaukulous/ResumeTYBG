@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Resume {
     private String name;
     private String emailAddress;
-    ArrayList<Experience> experience = new ArrayList<>();
-    ArrayList<Education> education = new ArrayList<>();
-    ArrayList<Skill> skills = new ArrayList<>();
+    private ArrayList<Experience> experience = new ArrayList<>();
+    private ArrayList<Education> education = new ArrayList<>();
+    private ArrayList<Skill> skills = new ArrayList<>();
 
     public Resume() {
 

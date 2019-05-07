@@ -11,8 +11,11 @@ public class Main {
         String email;
         Boolean addEduHistory = true;
         Boolean addExpHistory = true;
+        Boolean addSkill = true;
         String eduresult;
         String expresult;
+        String skresult;
+
 
         //ASK USER FOR NAME
         System.out.print("This is a resume builder, Please enter your name: ");
@@ -31,7 +34,7 @@ public class Main {
             System.out.print("Would you like to provide Educational history? Please enter y(Yes) or n(No): ");
             eduresult = scanner.nextLine();
 
-            if (eduresult.toLowerCase() == "n") {
+            if (eduresult.equalsIgnoreCase("n")) {
                 addEduHistory = false;
             } else {
 
@@ -50,47 +53,71 @@ public class Main {
                 System.out.println("Please enter your university name:  ");
                 userUniversityname = scanner.nextLine();
 
-                Education userEdu = new Education(userDegreeLevel, userMajor, userUniversityname, userGradYear);
+
+                resume.addEducation(new Education(userDegreeLevel, userMajor, userUniversityname, userGradYear));
+
+
+            }
+        }
+
+
+        while (addExpHistory) {
+            System.out.print("Provide job experience? Please enter y(yes) or nNo); ");
+            expresult = scanner.nextLine();
+
+            if (expresult.equalsIgnoreCase("n")) {
+                addExpHistory = false;
+            } else {
+
+                String userCompany, userJobTitle, userStartDate, UserEndDate, userJobDiscription;
+
+                System.out.print("Please enter your Company name: ");
+                userCompany = scanner.nextLine();
+
+                System.out.print("Please enter you job title: ");
+                userJobTitle = scanner.nextLine();
+
+                System.out.print("enter your start date: ");
+                userStartDate = scanner.nextLine();
+
+                System.out.print("enter your end date: ");
+                UserEndDate = scanner.nextLine();
+
+                System.out.print("Please enter your job discription");
+                userJobDiscription = scanner.nextLine();
+
+
+                resume.addExperience(new Experience(userCompany, userJobTitle, userStartDate, UserEndDate, userJobDiscription));
             }
 
+            while (addSkill) {
+                System.out.print("would you like to add skills (y/n)");
+                skresult = scanner.nextLine();
 
-                while (addExpHistory) {
-                    System.out.print("Provide job experience? Please enter y(yes) or nNo); ");
-                    expresult = scanner.nextLine();
+                if (skresult.equalsIgnoreCase("n")) {
+                    addSkill = false;
+                } else {
 
-                    if (expresult.toLowerCase() == "n") {
-                        addExpHistory = false;
-                    } else {
+                    String skillName, skillCompetency;
 
-                        String userCompany, userJobTitle, userStartDate, UserEndDate, userJobDiscription;
+                    System.out.print("Please enter skill");
+                    skillName = scanner.nextLine();
 
-                        System.out.print("Please enter your Company name: ");
-                        userCompany = scanner.nextLine();
+                    System.out.print("Please enter Competency for skill");
+                    skillCompetency = scanner.nextLine();
 
-                        System.out.print("Please enter you job title: ");
-                        userJobTitle = scanner.nextLine();
+                    resume.addSkill(new Skill(skillName, skillCompetency));
 
-                        System.out.print("enter your start date: ");
-                        userStartDate = scanner.nextLine();
-
-                        System.out.print("enter your end date: ");
-                        UserEndDate = scanner.nextLine();
-
-                        Experience userExp = new Experience(userCompany, userJobTitle, userStartDate, UserEndDate, userJobDiscription);
-                    }
-
-
-
-
-
-
-                    }
 
 
                 }
 
 
             }
-        }
-    }
 
+
+        }
+
+
+    }
+}
